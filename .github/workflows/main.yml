@@ -1,24 +1,26 @@
-name: CI
+name: Django-app workflow
 
 on:
-  push:
-    branches: [ master, main ]
-  pull_request:
-    branches: [ master, main ]
+  push: [ master, main ]
 
 jobs:
-  # name of job - build имя джобы ( может быть несколько джоб - выполняться паралельно или последовательно)
-  build:
-    # тип раннера - на котором будет выполняться джоба
-    runs-on: ubuntu-latest
-    # steps  - шаги - представляют последовательность задач, которые будут выполняться в рамках джобы
-    steps:
-      - uses: actions/checkout@v2
-      - name: Run a one-line script # имя шага
-        run: echo "Hello world!"
-      - name: Run a multi-line script # step 2
-        run: |
-          echo "Add other options to build some task"
-          echo "test, and deploy your project"
+  tests:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: action/checkout@v2 # для клонирования репы в раннер
+    - name: Set Up Python
+      uses: actions/setup-python@v2 # для развертывания окружения питон
+      with:
+        python-version: 3.7 # выбор версии питона для развертывания
+    
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install -r requirements.txt
+        python -m pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
 
+    - name: Test with Flake8 and Django Tests
+      run: |
+        python -m flake8
+        
 
