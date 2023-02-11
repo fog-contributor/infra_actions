@@ -58,4 +58,4 @@ jobs:
           script: |
             sudo docker pull iostream24/infra_proj:latest
             sudo docker stop $(sudo docker ps -a -q)
-            sudo docker run -rm -d -p 5000:5000 iostream24/infra_proj
+            sudo docker run --rm -d -p 5000:5000 iostream24/infra_proj
