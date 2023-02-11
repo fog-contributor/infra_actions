@@ -1,7 +1,8 @@
 name: Django-app workflow
 
 on:
-  push: [ master, main ]
+  push:
+  branches: [ master, main ]
 
 jobs:
   tests:
@@ -22,5 +23,5 @@ jobs:
     - name: Test with Flake8 and Django Tests
       run: |
         python -m flake8
-        
+
 
