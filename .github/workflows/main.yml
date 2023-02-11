@@ -6,7 +6,7 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: action/checkout@v2 # для клонирования репы в раннер
+      - uses: actions/checkout@v2 # для клонирования репы в раннер
       - name: Set Up Python
         uses: actions/setup-python@v2 # для развертывания окружения питон
         with:
