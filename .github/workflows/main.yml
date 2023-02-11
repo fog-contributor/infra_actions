@@ -1,1 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  # name of job - build имя джобы ( может быть несколько джоб - выполняться паралельно или последовательно)
+  build:
+    # тип раннера - на котором будет выполняться джоба
+    runs-on: ubuntu-latest
+    # steps  - шаги - представляют последовательность задач, которые будут выполняться в рамках джобы
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a one-line script # имя шага
+        run: echo "Hello world!"
+      - name: Run a multi-line script # step 2
+        run: |
+          echo "Add other options to build some task"
+          echo "test, and deploy your project"
+
 
