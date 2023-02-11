@@ -54,7 +54,7 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
+          key: ${{ secrets.SSH_KEY }}
           script: |
             sudo docker pull iostream24/infra_proj:latest
             sudo docker stop $(sudo docker ps -a -q)
